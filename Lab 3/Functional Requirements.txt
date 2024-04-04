@@ -1,0 +1,15 @@
+Functional Requirements
+• The system should be able to register dentists
+• The system should be able to enroll new Patients
+• The system should allow patients to request appointments for dental consultations with a dentist. 
+• System sends confirmation email to patient and updates appointment. 
+• The system should allow dentists to log in. 
+• The system should provide information about each Surgery,
+• Patients should be able to sign in to the system
+• The system should allow patients to view their appointment details.
+• The system should allow patients to cancel or reschedule their appointments easily.
+
+• Dentist
+• Patient
+• Appointment
+• Surgery
