@@ -32,7 +32,7 @@ public class EmployeePensionService {
     public void monthlyUpcomingEnrolees() {
         List<Employee> enrollees = new ArrayList<>();
         LocalDate today = LocalDate.now();
-        int lastDay = today.plusMonths(1).lengthOfMonth();
+        int lastDay = today.plusMonths(1).lengthOfMonth(); // 29
         for (Employee emp : employees) {
             if (((today.getYear() - emp.getEmployementDate().getYear() >= 5) ||
                     ((emp.getEmployementDate().getDayOfMonth() > 1) &&
@@ -74,7 +74,7 @@ public class EmployeePensionService {
     public void printJSONFormat(String sortType) throws JsonProcessingException {
         List<Employee> sortedEmployee = new ArrayList<>();
         if (sortType.equals("ByLastName")) {
-            Comparator<Employee> byLastName = Comparator.comparing(Employee::getLastName);
+            Comparator<Employee> byLastName = Comparator.comparing(Employee::getFirstName);
             sortedEmployee = employees.stream().sorted(byLastName).collect(Collectors.toCollection(ArrayList::new));
         } else if (sortType.equals("BySalary")) {
             Comparator<Employee> bySalary = Comparator.comparing(Employee::getYearlySalary).reversed();
