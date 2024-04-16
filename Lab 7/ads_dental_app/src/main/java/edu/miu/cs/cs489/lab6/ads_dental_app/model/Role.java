@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,4 +18,6 @@ public class Role {
     private Long id;
     @Enumerated(EnumType.STRING)
     private RoleType roleType;
+    @ManyToMany(mappedBy = "role")
+    private List<User> user;
 }

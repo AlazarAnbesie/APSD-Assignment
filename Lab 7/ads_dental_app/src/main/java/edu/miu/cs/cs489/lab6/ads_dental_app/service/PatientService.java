@@ -1,19 +1,21 @@
 package edu.miu.cs.cs489.lab6.ads_dental_app.service;
 
+import edu.miu.cs.cs489.lab6.ads_dental_app.dto.patient.PatientRequest;
+import edu.miu.cs.cs489.lab6.ads_dental_app.dto.patient.PatientResponse;
 import edu.miu.cs.cs489.lab6.ads_dental_app.model.Patient;
 
 import java.util.List;
 
 public interface PatientService {
-    public Patient create(Patient patient);
+    public PatientResponse create(PatientRequest patient);
 
-    public Patient read(Long id);
+    public PatientResponse read(Long id);
 
-    public Patient update(Long id, Patient patient);
+    public PatientResponse update(Long id, PatientRequest patient);
 
     public void delete(Long id);
 
-    public List<Patient> getAllPatients();
+    public List<PatientResponse> getAllPatients();
 
-    public List<Patient> search(String query);
+    public List<PatientResponse> search(String query);
 }

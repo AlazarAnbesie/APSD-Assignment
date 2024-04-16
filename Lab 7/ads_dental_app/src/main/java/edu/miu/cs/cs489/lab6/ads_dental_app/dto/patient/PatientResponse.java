@@ -1,16 +1,18 @@
-package edu.miu.cs.cs489.lab6.ads_dental_app.dto.PatientDTO;
+package edu.miu.cs.cs489.lab6.ads_dental_app.dto.patient;
 
+import edu.miu.cs.cs489.lab6.ads_dental_app.dto.role.RoleResponse;
 import edu.miu.cs.cs489.lab6.ads_dental_app.model.Address;
 
 import java.time.LocalDate;
+import java.util.List;
 
-public record PatientRequest(
+public record PatientResponse(
+        Long id,
         String name,
         String email,
         String phone,
         String username,
-        String password,
-        String roleType,
+        List<RoleResponse> roles,
         Address address,
         LocalDate dob
 ) {
