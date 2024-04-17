@@ -19,7 +19,7 @@ import java.util.function.Function;
 @Service
 public class JWTManagementUtilityService {
 
-    public  static final String SECRET = "879GSDG789SD8789HSF878SD9GDS789GSDG";
+    public  static final String SECRET = "mySuperSecretKeyForJWTManagementUtilityService101";
 
     public String createToken(Map<String,Object> claims, String subject) {
         var now = Instant.now();

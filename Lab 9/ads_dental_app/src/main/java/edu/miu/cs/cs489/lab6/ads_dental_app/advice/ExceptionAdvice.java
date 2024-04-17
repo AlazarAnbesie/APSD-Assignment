@@ -2,6 +2,7 @@ package edu.miu.cs.cs489.lab6.ads_dental_app.advice;
 
 import edu.miu.cs.cs489.lab6.ads_dental_app.exception.PatientNotFoundException;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -29,4 +30,11 @@ public class ExceptionAdvice {
         });
         return errorMap;
     }
+
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(BadCredentialsException.class)
+    public Map<String, String> handle(BadCredentialsException e) {
+        return Map.of("error", e.getMessage());
+    }
+
 }

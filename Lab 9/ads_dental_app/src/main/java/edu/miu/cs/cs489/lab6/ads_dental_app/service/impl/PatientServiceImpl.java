@@ -10,6 +10,8 @@ import edu.miu.cs.cs489.lab6.ads_dental_app.repository.PatientRepository;
 import edu.miu.cs.cs489.lab6.ads_dental_app.repository.RoleRepository;
 import edu.miu.cs.cs489.lab6.ads_dental_app.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +22,9 @@ public class PatientServiceImpl implements PatientService {
     PatientRepository patientRepository;
 
     RoleRepository roleRepository;
+
+    @Autowired
+    PasswordEncoder bCrypt;
 
     @Override
     public PatientResponse create(PatientRequest patient) {
@@ -88,7 +93,8 @@ public class PatientServiceImpl implements PatientService {
         patient.setEmail(patientRequest.email());
         patient.setPhone(patientRequest.phone());
         patient.setUsername(patientRequest.username());
-        patient.setPassword(patientRequest.password());
+        String password = bCrypt.encode(patientRequest.password());
+        patient.setPassword(password);
         patient.setAddress(patientRequest.address());
         patient.setDob(patientRequest.dob());
     }

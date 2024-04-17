@@ -17,8 +17,8 @@ import java.io.IOException;
 
 @Component
 public class JWTAuthFilter extends OncePerRequestFilter {
-    private ADSUserDetailService adsUserDetailService;
-    private JWTManagementUtilityService jwtManagementUtilityService;
+    private final ADSUserDetailService adsUserDetailService;
+    private final JWTManagementUtilityService jwtManagementUtilityService;
 
     public JWTAuthFilter(ADSUserDetailService adsUserDetailService, JWTManagementUtilityService jwtManagementUtilityService) {
         this.adsUserDetailService = adsUserDetailService;
@@ -31,6 +31,10 @@ public class JWTAuthFilter extends OncePerRequestFilter {
         String authorizationHeader = request.getHeader("Authorization");
         String token = null;
         String username = null;
+        // This if statement is checking if the authorizationHeader is not null and starts with "Bearer "
+        // which is checking if the user already has a token
+        // If the user has a token, it will extract the token and the username from the token
+        //
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             token = authorizationHeader.substring(7);
             username = jwtManagementUtilityService.extractUsername(token);

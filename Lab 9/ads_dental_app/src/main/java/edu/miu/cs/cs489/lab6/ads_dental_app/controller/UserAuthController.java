@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/auth")
 public class UserAuthController {
-    private JWTManagementUtilityService jwtManagementUtilityService;
-    private AuthenticationManager authenticationManager;
+    private final JWTManagementUtilityService jwtManagementUtilityService;
+    private final AuthenticationManager authenticationManager;
 
     public UserAuthController(JWTManagementUtilityService jwtManagementUtilityService, AuthenticationManager authenticationManager) {
         this.jwtManagementUtilityService = jwtManagementUtilityService;

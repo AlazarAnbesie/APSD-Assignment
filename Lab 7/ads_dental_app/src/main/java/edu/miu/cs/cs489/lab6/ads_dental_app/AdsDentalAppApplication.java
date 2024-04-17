@@ -68,7 +68,7 @@ public class AdsDentalAppApplication implements CommandLineRunner {
 		//--------------------------------------------------------- //
 
 		// search ----------------------------------------------- //
-		PatientResponse[] searchResults = restTemplate.getForObject(url + "/search?query=Fairfield", PatientResponse[].class);
+		PatientResponse[] searchResults = restTemplate.getForObject(url + "/search?query=Lame", PatientResponse[].class);
 		System.out.println("Search results: ");
 		for (PatientResponse p : searchResults) {
 			System.out.println(p);

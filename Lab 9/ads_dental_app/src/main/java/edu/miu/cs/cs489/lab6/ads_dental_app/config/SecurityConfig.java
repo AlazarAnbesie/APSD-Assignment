@@ -21,8 +21,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-    private ADSUserDetailService adsUserDetailService;
-    private JWTAuthFilter jwtAuthFilter;
+    private final ADSUserDetailService adsUserDetailService;
+    private final JWTAuthFilter jwtAuthFilter;
 
     public SecurityConfig(ADSUserDetailService adsUserDetailService, JWTAuthFilter jwtAuthFilter) {
         this.adsUserDetailService = adsUserDetailService;
@@ -35,11 +35,11 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests(authorizeRequests ->{
                     authorizeRequests
-                            .requestMatchers("/adsweb/api/v1/**").permitAll()
+                            .requestMatchers("/api/auth/login").permitAll()
+                            .requestMatchers("/adsweb/api/v1/patient/register").permitAll()
                             .requestMatchers("/adsweb/api/v1/patient/**").authenticated();
-                        }
-     )
-                .sessionManagement(session ->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                        })
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

@@ -5,10 +5,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Data
+@ToString(exclude = "role")
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -42,7 +40,7 @@ public  class User implements UserDetails {
     @Size(min = 3, max = 50, message = "Username must be between 3 and 50 characters")
     private String username;
     @NotNull(message = "Password is required")
-    @Size(min = 6, max = 16, message = "Password must be between 6 and 16 characters")
+//    @Size(min = 6, max = 16, message = "Password must be between 6 and 16 characters")
     private String password;
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinTable(
