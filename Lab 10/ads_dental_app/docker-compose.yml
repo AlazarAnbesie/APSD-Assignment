@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+
+    ads_dental_db:
+      container_name: ads_dental_db
+      image: mysql:8.0
+      environment:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: ads_dental_app
+      ports:
+        - "3307:3306"
+      volumes:
+        - ./mysql:/var/lib/mysql
+      restart: unless-stopped
+    ads_dental_app:
+      build: .
+      ports:
+        - "8000:8000"
+      depends_on:
+        - ads_dental_db
+      environment:
+        - MYSQL_HOST=ads_dental_db
+        - MYSQL_USER=root
+        - MYSQL_PASSWORD=root
+        - MYSQL_DATABASE=ads_dental_app
+        - MYSQL_PORT=3306
