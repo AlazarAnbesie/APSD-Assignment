@@ -19,7 +19,7 @@ import java.util.function.Function;
 
 @Service
 public class JWTManagementUtilityService {
-    public  static final String SECRET = "ThisIsASample256BitKeyForJWTManagementUtilityService"; //256 bit key
+    public  static final String SECRET = "ThisIsASample256BitKeyForCarRentalManagementSystem"; //256 bit key
 
     public String createToken(Map<String,Object> claims, String subject) {
         var now = Instant.now();
