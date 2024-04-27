@@ -14,4 +14,6 @@ public interface AppointmentService {
     public void delete(Long id);
 
     public List<Appointment> getAllAppointments();
+
+    
 }
